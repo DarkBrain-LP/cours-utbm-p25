@@ -1,0 +1,44 @@
+@startuml
+' correction: librarie et document: agrégation
+' correction: livre et auteur: composition
+' correction: pad de type de document. Livre et autres héritent directmeent de document
+class Library{
+}
+Document "*" .. "1" Library: stock
+class TypeDocument{
+}
+class Livre{
+    + nombrePages
+}
+' un livre possède un ou plusieurs auteurs
+Livre "1" .. "*" Auteur
+class Auteur{
+    + nom
+    + prenom
+    + dateNaissance
+}
+class Periodique{
+    + frequencePublication
+    + dateDebut
+    + dateFin
+}
+class SupportMultimedia{
+    + isVideo: bool
+    + duree
+}
+
+' livre est un type de document
+TypeDocument <|-- Livre
+TypeDocument <|-- Periodique
+TypeDocument <|-- SupportMultimedia
+
+class Document{
+    + titre
+    + nombreExemplaire
+}
+' un document est composé d'un type de document
+Document "*" .. "1" TypeDocument
+
+
+@enduml
+

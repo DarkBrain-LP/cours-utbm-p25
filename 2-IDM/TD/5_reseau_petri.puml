@@ -1,0 +1,31 @@
+@startuml
+' top to bottom direction
+' left to right direction
+class Noeud{}
+class Arc{
+    +nbJeton: int
+}
+' Noeud "1" *-- "*" Arc
+class ArcNormal{
+    ' +nbJetonAjout: int
+}
+class ArcLecture{
+    ' +nbJetonsRetir: int
+}
+Arc <|-- ArcNormal
+Arc <|-- ArcLecture
+class Place{}
+Place "1" *-- "*" ArcNormal
+class Transition{
+    +min: int
+    +max: int
+}
+
+Transition "1" .. "*" ArcNormal
+Place "1" .. "*" ArcNormal
+Transition "1" .. "*" ArcLecture
+
+Noeud <|-- Place
+Noeud <|-- Transition
+
+@enduml

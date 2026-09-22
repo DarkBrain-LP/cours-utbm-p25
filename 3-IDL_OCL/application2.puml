@@ -1,0 +1,28 @@
+@startuml
+left to right direction
+
+' class Reservoir{
+'     - capacite: int
+'     - capaciteMax: int
+' }
+
+class Moteur{
+    - isDemarre: boolean
+}
+
+class Voiture {
+    - enMarche: boolean
+    - capacite: int
+    - capaciteMax: int
+}
+
+Voiture "1" ---- "1" Moteur
+' Moteur "1" ---- "1" Reservoir
+
+class Personne{
+    - nom: String
+    - prenom: String
+    - age: int
+}
+Personne "0..*" --- "1..1" Voiture
+@enduml

@@ -1,0 +1,39 @@
+@startuml
+
+'correction: le role est l'association entre ligne de vie et classe
+'correction: il faut rajouter la représenataion de plusieurs ligne d'activation qui peuvent arrivés sur une ligne de vie
+class DiagrammeSequence{
+}
+
+DiagrammeSequence "1" *-- "*" Role
+class Role{
+    +nom: string
+    +type: string
+}
+Role "1" *-- "*" LigneActivation
+class LigneActivation{  
+
+}
+' LigneActivation est composé d'activités
+LigneActivation "1" *-- "*" Message 
+class Message{
+    +nom: string
+    +typeRetour: string
+    +conditionActivation: bool
+    +AsterisqueDiffusion: bool
+}
+Message "1" *-- "*" ParametreMsg
+class ParametreMsg{
+    +nom: string
+    +type: string
+}
+
+class ReceptionMessage{
+}
+class EmissionMessage{
+}
+Message <|-- ReceptionMessage
+Message <|-- EmissionMessage
+' class LigneVie
+
+@enduml

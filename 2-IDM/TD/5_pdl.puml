@@ -1,0 +1,41 @@
+@startuml
+'direction horizontale
+' TODO: error see correction
+' left to right direction
+foo -right- dummyLeft
+class Processus{
+    +nom: string
+    +description: string
+}
+' process composé d'un ensemble de WorkDefinition
+Processus "1" *-- "*" WorkDefinition
+class WorkDefinition{
+    +nom: string
+}
+' "0..*" - "1..*"
+WorkDefinition --  WorkDefinition 
+(WorkDefinition, WorkDefinition) .. WorkSequence
+
+WorkSequence "1" -- "1..*" WorkDefinition 
+(WorkSequence, WorkDefinition) .. linkType
+class WorkSequence{
+
+}
+enum linkType{
+    finishToStart
+    startToStart
+    startToFinish
+    finishToFinish
+}
+
+class Ressource{
+    +nom: string
+    +description: string
+    +minTime: Date
+    +maxTime: Date
+}
+WorkDefinition "1" *-- "*" Ressource
+
+
+' WorkSequence "1" -- "*" WorkDefinition (WorkSequence, WorkDefinition) .. linkType
+@enduml

@@ -1,0 +1,42 @@
+@startuml
+
+left to right direction
+
+class Reunion{
+    - titre: String
+    - date: Date
+    - duree: int
+    - debut: int
+    - fin: int
+    - isConfirmed: boolean
+}
+
+class Personne {
+    -nom: String
+    -prenom: String
+    -age: int
+    -titre: String
+
+    ' +Personne(nom: String, prenom: String, age: int)
+    ' +getNom(): String
+    ' +getPrenom(): String
+    ' +getAge(): int
+    ' +setNom(nom: String): void
+    ' +setPrenom(prenom: String): void
+    ' +setAge(age: int): void
+}
+
+
+' Reunion  Personne '*--
+' association plusieurs à plusieurs avec une classe d'association
+Reunion "0..* participants" ------ "1..* participe" Personne
+' (Reunion, Personne) .. Participant
+Reunion "0..*" --- "1..1 moderateur" Personne
+' class Participant {
+'   - isModerator: boolean
+' }
+
+' constraints
+
+
+@enduml

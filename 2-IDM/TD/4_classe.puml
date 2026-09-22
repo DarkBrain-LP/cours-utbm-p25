@@ -1,0 +1,41 @@
+@startuml
+
+class DiagrammeClasse{
+}
+
+DiagrammeClasse "1" *-- "*" Classe
+class Classe{
+    +nom: string
+    +type: string
+}
+Classe "1" *-- "*" Methode
+
+class Association{
+    +multiplicite1: string
+    +multiplicite2: string
+}
+
+' Classe .. Association
+Association "*" *-- "*" Classe
+
+' Classe .. Classe
+
+class Methode{
+    +nom: string
+    +typeRetour: string
+}
+Methode "1" *-- "*" ParametreMsg
+class ParametreMsg{
+    +nom: string
+    +type: string
+}
+
+' class ReceptionMethode{
+' }
+' class EmissionMethode{
+' }
+' Methode <|-- ReceptionMethode
+' Methode <|-- EmissionMethode
+' class LigneVie
+
+@enduml

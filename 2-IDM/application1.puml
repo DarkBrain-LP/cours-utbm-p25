@@ -1,0 +1,27 @@
+@startuml
+
+class Vehicle {
+    + price
+    + nbOfWheel
+    +func()
+}
+WheelDimension <-* Vehicle: "1..*" >
+class WheelDimension {
+    + diameter
+    + width
+}
+
+Vehicle <|-- MotorVehicle
+
+class MotorVehicle {
+    + immatriculation
+    + nbOfPlace
+    +getPower()
+}
+MotorVehicle "1" .. "*" Motor
+class Motor{
+    + power
+}
+
+@enduml
+
