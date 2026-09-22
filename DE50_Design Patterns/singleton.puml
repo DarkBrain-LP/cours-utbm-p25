@@ -1,0 +1,13 @@
+@startuml
+package "Singleton" {
+  class Singleton {
+    - instance: Singleton
+    + getInstance(): Singleton
+  }
+  Singleton : - Singleton()
+  Singleton : + doSomething()
+}
+  Singleton : + getInstance() : Singleton
+  Singleton : - instance : Singleton
+  Singleton : + doSomething()
+  Singleton : - Singleton()
